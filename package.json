@@ -1,0 +1,42 @@
+{
+  "name": "instagram",
+  "version": "1.0.0",
+  "description": "Instagram Clone App",
+  "main": "server.js",
+  "repository": "https://github.com/collinstheuncoder/instagram.git",
+  "author": "collinstheuncoder <collinstheuncoder@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "server": "nodemon --exec babel-node server/src/server.js",
+    "client": "cd client && yarn start",
+    "dev": "concurrently \"yarn server\" \"yarn client\"",
+    "prebuild": "rm -rf server/dist",
+    "build-babel": "babel -d ./server/dist ./server/src -s",
+    "build": "yarn build-babel",
+    "start": "node server/build/server.js",
+    "heroku-postbuild": "YARN_PRODUCTION=false yarn build && cd client && yarn && yarn build"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.0",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "validator": "^10.9.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.9"
+  }
+}

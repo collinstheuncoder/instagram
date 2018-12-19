@@ -1,7 +1,6 @@
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from '../reducers';
 
@@ -9,8 +8,10 @@ function configureStore() {
   return {
     ...createStore(
       rootReducer,
-      composeWithDevTools(),
-      applyMiddleware(logger, thunk)
+      compose(
+        applyMiddleware(logger, thunk),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+      )
     ),
   };
 }

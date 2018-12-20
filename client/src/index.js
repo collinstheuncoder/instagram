@@ -9,6 +9,7 @@ import App from './components/App';
  
 // Stylesheets
 import 'semantic-ui-css/semantic.min.css';
+import './scss/index.scss';
 
 // Store config
 import configureStore from './store';

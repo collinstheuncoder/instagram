@@ -4,16 +4,6 @@ import { Grid, Icon, Image, Search } from 'semantic-ui-react';
 
 import style from './header.module.scss';
 
-const styles = {
-  row: {
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  icon: {
-    fontSize: '2.5rem',
-  },
-};
-
 function InstaHeader() {
   const { 
     column, 
@@ -21,15 +11,16 @@ function InstaHeader() {
     grid, 
     header,
     icon,
-    image, 
+    image,  
     link,
-    logo
+    logo,
+    row
   } = style;
 
   return (
     <header className={header}>
       <Grid columns={3} className={grid}>
-        <Grid.Row style={styles.row}>
+        <Grid.Row className={row}>
           <Grid.Column className={column}>
             <Link to="/" className={logo}>
               <Icon name="instagram" size="large" className={icon} />

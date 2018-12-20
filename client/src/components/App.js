@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 
-import InstaHeader from './layout/InstaHeader';
-import InstaMain from './layout/InstaMain';
-import InstaFooter from './layout/InstaFooter';
+import InstaHeader from './layout/header';
+import InstaMain from './layout/main';
+import InstaFooter from './layout/footer';
 
 function InstaApp() {
   return (

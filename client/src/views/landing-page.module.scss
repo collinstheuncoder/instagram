@@ -1,0 +1,29 @@
+@import '../scss/index';
+
+.grid {
+  justify-content: center !important;
+}
+
+.row {
+  align-items: center !important;
+  margin: 0 3.5rem;
+  padding-top: 2rem !important;
+}
+
+.column {
+  &--bg-img {
+    display: none !important;
+    
+    @include largeDevices {
+      display: block !important;
+    }
+  }
+  
+  &--auth {
+    flex-basis: 100%;
+    
+    @include largeDevices {
+      flex-basis: 50%;
+    }
+  }
+}

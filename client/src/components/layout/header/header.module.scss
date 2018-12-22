@@ -1,7 +1,9 @@
 @import "../../../scss/index";
 
 .header {
-	
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
 
 .grid {
@@ -11,7 +13,6 @@
   background-color: #ffffff;
   top: 0;
   width: 100%;
-  z-index: 1;
 
   @include mediumDevices {
 		height: 6rem;
@@ -99,6 +100,6 @@
   }
   
   @include mediumDevices {
-    padding: 0.35rem 1.25rem;
+    padding: 0.5rem 1.5rem;
   }
 }

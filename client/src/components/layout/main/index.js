@@ -11,9 +11,11 @@ import LoginPage from '../../../views/LoginPage';
 import EditProfilePage from '../../../views/EditProfilePage';
 import NotFoundPage from '../../../views/NotFoundPage';
 
+import { main } from './main.module.scss';
+
 function InstaMain() {
   return (
-    <main className="main">
+    <main className={main}>
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/home" component={HomePage} />

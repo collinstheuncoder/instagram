@@ -38,8 +38,8 @@ function InstaHeader() {
           </Grid.Column>
           <Grid.Column className={column}>
             <nav>
-              <NavLink to="/auth/login" className={link}>Log in</NavLink>
-              <NavLink to="/auth/signup">Sign up</NavLink>
+              <NavLink to="/accounts/login" className={link}>Log in</NavLink>
+              <NavLink to="/accounts/signup">Sign up</NavLink>
             </nav>
           </Grid.Column>
         </Grid.Row>

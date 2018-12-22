@@ -95,6 +95,10 @@
   margin-right: 1rem;
   font-weight: 600;
   
+  &:hover {
+    color: #ffffff;
+  }
+  
   ~ a {
     font-weight: 600;
   }

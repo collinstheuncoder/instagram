@@ -7,7 +7,7 @@ const userRouter = express.Router();
 const handleAuth = passport.authenticate('jwt', { session: false });
 
 userRouter.route('/').get(usersController.getAllUsers);
-userRouter.route('/me').get(handleAuth, usersController.getCurrentUser);
+userRouter.route('/me').get(usersController.getCurrentUser);
 userRouter.route('/:handle').get(usersController.getUserByHandle);
 userRouter.route('/:handle/update').patch(handleAuth, usersController.updateUserInfo);
 userRouter.route('/:handle/follow').patch(handleAuth, usersController.followUser);

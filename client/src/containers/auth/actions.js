@@ -1,5 +1,8 @@
-import axios from 'axios';
 import * as actionTypes from './constants';
+
+import clientReq from '../../auth';
+
+const request = clientReq();
 
 // Create account
 export const createAccount = (
@@ -14,7 +17,7 @@ export const createAccount = (
   });
 
   try {
-    const { data: { newUser: { token } } } = await axios.post('/auth/signup', {
+    const { data: { newUser: { token } } } = await request.post('/auth/signup', {
       fullname,
       username,
       email,
@@ -42,7 +45,7 @@ export const loginUser = (username, password, history) => async dispatch => {
   });
 
   try {
-    const { data: { token } } = await axios.post('/auth/login', {
+    const { data: { token } } = await request.post('/auth/login', {
       username,
       password,
     });

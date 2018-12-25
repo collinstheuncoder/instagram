@@ -3,7 +3,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  margin-top: 5.5rem;
+  margin-top: 5rem;
   
   @include mediumDevices {
     padding: 0 7.5rem;

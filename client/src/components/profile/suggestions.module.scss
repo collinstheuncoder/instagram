@@ -1,0 +1,31 @@
+.row {
+  padding: 1rem;
+}
+
+.users-list {
+  display: flex;
+}
+
+.column {
+  width: 15rem;
+  margin: auto;
+}
+
+.card {
+  width: 12.5rem;
+  margin: auto;
+  border-radius: 1px;
+}
+
+.avatar {
+  margin: 0 auto;
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+}
+
+.handle {
+  font-weight: 600;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.3);
+}

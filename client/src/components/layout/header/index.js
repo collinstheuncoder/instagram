@@ -39,6 +39,7 @@ function InstaHeader() {
           <Grid.Column className={column}>
             <nav>
               <NavLink to="/accounts/login" className={link}>Log in</NavLink>
+              <span className={style['link-separator']}></span>
               <NavLink to="/accounts/signup">Sign up</NavLink>
             </nav>
           </Grid.Column>

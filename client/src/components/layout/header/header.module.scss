@@ -88,19 +88,34 @@
 }
 
 .link {
-	background-color: #4183c4;
-  color: #ffffff;
-  padding: 0.25rem 1rem;
-  border-radius: 0.25rem;
-  margin-right: 1rem;
+  color: #3897f0;
   font-weight: 600;
   
-  &:hover {
+  @include mediumDevices {
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    margin-right: 1rem;
+    background-color: #3897f0;
+    border-color: #3897f0;
     color: #ffffff;
+    
+    &:hover {
+      color: #ffffff;
+    }
+  }
+  
+  &-separator {
+    margin: 0 0.75rem;
+    border-right: 1px solid #d4d4d5;
+    
+    @include mediumDevices {
+      display: none;
+    }
   }
   
   ~ a {
     font-weight: 600;
+    color: #3897f0;
   }
   
   @include mediumDevices {

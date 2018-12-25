@@ -13,11 +13,58 @@ import './scss/index.scss';
 
 // Store config
 import configureStore from './store';
+import { LOGIN_SUCCESS } from './containers/auth/constants';
+import {
+  FETCH_CURRENT_USER_SUCCESS,
+  FETCH_CURRENT_USER_FAILURE,
+} from './containers/users/constants';
 
+import clientReq from './auth';
+
+// Attach token to request headers
+const request = clientReq();
+  
+// Create store
 const store = configureStore();
 
+// Retrieve token from browser storage
+const token = localStorage.getItem('ig-token');
+
+// Auto login to account
+autoLogin(token);
+
+async function autoLogin(token) {
+  if (token) {
+    store.dispatch({
+      type: LOGIN_SUCCESS,
+    });
+
+    // Request for current logged in user
+    getUserInfo(token);
+  }
+}
+
+// Get authenticated user's info
+async function getUserInfo(token) {  
+  try {
+    const { data: { user } } = await request.get(`/users/me`);
+
+    if (user) {
+      store.dispatch({
+        type: FETCH_CURRENT_USER_SUCCESS,
+        payload: user,
+      });
+    }
+  } catch (error) {
+    store.dispatch({
+      type: FETCH_CURRENT_USER_FAILURE,
+      payload: error,
+    });
+  }
+}
+
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={store}> 
     <Router>
       <App />
     </Router>

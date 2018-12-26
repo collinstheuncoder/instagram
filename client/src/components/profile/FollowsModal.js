@@ -1,5 +1,5 @@
 import React from 'react';
-import { array, func, object, string } from 'prop-types';
+import { array, func, string } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button, Header, Image, List, Modal } from 'semantic-ui-react';
 
@@ -52,14 +52,16 @@ function FollowsModal({ follows, title, currentUserId, followUser }) {
     if (number >= 1000000) {
       number = number / 1000000;
       const strgdNum = String(number);
-
+      
+      // eslint-disable-next-line
       return strgdNum.charAt(strgdNum.indexOf('.') + 1) == 0
         ? `${Math.floor(number)}m`
         : `${number.toFixed(1)}m`;
     } else if (number >= 10000 && number < 1000000) {
       number = number / 1000;
       const strgdNum = String(number);
-
+      
+      // eslint-disable-next-line
       return strgdNum.charAt(strgdNum.indexOf('.') + 1) == 0
         ? `${Math.floor(number)}k`
         : `${number.toFixed(1)}k`;

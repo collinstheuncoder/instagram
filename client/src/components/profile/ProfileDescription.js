@@ -6,6 +6,13 @@ import { Grid } from 'semantic-ui-react';
 import style from './profile-desc.module.scss';
 
 function ProfileDescription({ profile }) {
+  // Reformat website link if not absolute
+  const webLink = website => {
+    if (!website) return '';
+    else if (website.includes('http')) return website;
+    else return `http://${website}`;
+  };
+
   return (
     <Grid.Row className={style.row}>
       <Grid.Column>
@@ -16,7 +23,11 @@ function ProfileDescription({ profile }) {
         </p>
         <p className={style.text}>{profile.bio}</p>
         <p className={style.text}>
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          <a
+            href={webLink(profile.website)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {profile.website}
           </a>
         </p>
@@ -48,7 +59,7 @@ ProfileDescription.propTypes = {
     bio: string,
     website: string,
     followers: array.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default ProfileDescription;

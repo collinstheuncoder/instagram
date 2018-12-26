@@ -46,6 +46,7 @@ class ProfileHeader extends Component {
     const {
       followUser,
       logout,
+      // eslint-disable-next-line
       displaySuggestions,
       currentUserId,
       profile,

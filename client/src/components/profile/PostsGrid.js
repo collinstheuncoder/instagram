@@ -6,7 +6,7 @@ import { Grid, Icon } from 'semantic-ui-react';
 import style from './posts-grid.module.scss';
 
 function PostsGrid({ posts, handle }) {
-  const { column, image, row, stats } = style;
+  const { column, row, stats } = style;
 
   return (
     <Grid.Row className={row}>

@@ -39,3 +39,16 @@ body {
   height: 2rem;
   background-color: rgb(250, 250, 250);
 }
+
+.comment-input {
+  input {
+    border-radius: 0 !important;
+    border-right: 0 !important;
+    border-left: 0 !important;
+    border-bottom: 0 !important;
+    
+    &:focus {
+      border-color: rgba(34,36,38,0.15) !important;
+    }
+  }
+}

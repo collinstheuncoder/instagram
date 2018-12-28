@@ -6,6 +6,10 @@
   padding: 0 10rem;
   padding-top: 0 !important;
   margin-top: 0.5rem;
+  
+  @include mediumDevices {
+    margin-top: -0.5rem;
+  }
 }
 
 .post-column {

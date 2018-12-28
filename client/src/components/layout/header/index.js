@@ -1,21 +1,16 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Grid, Icon, Image, Search } from 'semantic-ui-react';
+
+//import NewPostForm from '../forms/NewPostForm';
+
+import { uploadPost } from '../../../containers/posts/actions';
 
 import style from './header.module.scss';
 
-function InstaHeader() {
-  const { 
-    column, 
-    divider, 
-    grid, 
-    header,
-    icon,
-    image,  
-    link,
-    logo,
-    row
-  } = style;
+function InstaHeader({ isLoggedIn, currentUser }) {
+  const { column, divider, grid, header, icon, image, link, logo, row } = style;
 
   return (
     <header className={header}>
@@ -37,16 +32,59 @@ function InstaHeader() {
             <Search />
           </Grid.Column>
           <Grid.Column className={column}>
-            <nav>
-              <NavLink to="/accounts/login" className={link}>Log in</NavLink>
-              <span className={style['link-separator']}></span>
-              <NavLink to="/accounts/signup">Sign up</NavLink>
-            </nav>
+            {isLoggedIn ? (
+              <nav>
+                <Image
+                  style={{
+                    marginRight: '1.75rem',
+                    width: '1.65rem',
+                    display: 'inline',
+                    cursor: 'pointer',
+                  }}
+                  src="/images/add.png"
+                  size="small"
+                />
+                <Link
+                  to={`/${currentUser.username}`}
+                  style={{ color: 'inherit' }}
+                >
+                  <Icon
+                    style={{ marginRight: '1.75rem' }}
+                    name="heart outline"
+                    size="large"
+                  />
+                </Link>
+                <Link
+                  to={`/${currentUser.username}`}
+                  style={{ color: 'inherit' }}
+                >
+                  <Icon name="user outline" size="large" />
+                </Link>
+              </nav>
+            ) : (
+              <nav>
+                <NavLink to="/accounts/login" className={link}>
+                  Log in
+                </NavLink>
+                <span className={style['link-separator']} />
+                <NavLink to="/accounts/signup">Sign up</NavLink>
+              </nav>
+            )}
           </Grid.Column>
         </Grid.Row>
       </Grid>
     </header>
-  )
+  );
 }
 
-export default InstaHeader;
+function mapStateToProps({ auth, users }) {
+  return {
+    isLoggedIn: auth.isLoggedIn,
+    currentUser: users.currentUser,
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { uploadPost }
+)(InstaHeader);

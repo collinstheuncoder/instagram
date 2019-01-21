@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Grid, Icon, Image, Search } from 'semantic-ui-react';
+import { Grid, Icon, Image, Modal, Search } from 'semantic-ui-react';
 
-//import NewPostForm from '../forms/NewPostForm';
+import NewPostForm from '../../forms/NewPostForm';
 
 import { uploadPost } from '../../../containers/posts/actions';
 
@@ -34,16 +34,26 @@ function InstaHeader({ isLoggedIn, currentUser }) {
           <Grid.Column className={column}>
             {isLoggedIn ? (
               <nav>
-                <Image
-                  style={{
-                    marginRight: '1.75rem',
-                    width: '1.65rem',
-                    display: 'inline',
-                    cursor: 'pointer',
-                  }}
-                  src="/images/add.png"
-                  size="small"
-                />
+                <Modal
+                  size="tiny"
+                  trigger={
+                    <Image
+                      style={{ 
+                        marginRight: '1.75rem',
+                        width: '1.65rem',
+                        display: 'inline',
+                        cursor: 'pointer', 
+                      }}
+                      src="/images/add.png"
+                      size="small"
+                    />
+                  }
+                >
+                  <Modal.Header>Add Post</Modal.Header>
+                  <Modal.Content>
+                    <NewPostForm user={currentUser} uploadPost={uploadPost} />
+                  </Modal.Content>
+                </Modal>
                 <Link
                   to={`/${currentUser.username}`}
                   style={{ color: 'inherit' }}

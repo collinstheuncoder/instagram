@@ -1,11 +1,69 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { func } from 'prop-types';
+import { connect } from 'react-redux';
+import { Grid } from 'semantic-ui-react';
 
-function NewPostPage() {
-  return (
-    <div>
-     New Post Page
-    </div>
-  );
+import NewPostForm from '../components/forms/NewPostForm';
+
+import { uploadPost } from '../containers/posts/actions';
+
+const styles = {
+  grid: {
+    margin: '4rem 0',
+    justifyContent: 'center',
+  },
+  row: {
+    display: 'flex',
+    minHeight: '35rem',
+  },
+  column: {
+    padding: 0,
+    flexBasis: '60%',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+  },
+};
+
+class NewPostPage extends Component {
+  state = {
+    isOpen: false,
+  };
+
+  onOpenModal = () => {
+    this.setState({ isOpen: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ isOpen: false });
+  };
+
+  render() {
+    return (
+      <Grid style={styles.grid}>
+        <Grid.Row>
+          <Grid.Column>
+            {this.props.currentUser && (
+              <NewPostForm user={this.props.currentUser} uploadPost={uploadPost} />
+            )}
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    );
+  }
 }
 
-export default NewPostPage;
+NewPostPage.propTypes = {
+  uploadPost: func.isRequired,
+};
+
+function mapStateToProps({ auth, users }) {
+  return {
+    currentUser: users.currentUser,
+    error: auth.error,
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { uploadPost }
+)(NewPostPage);

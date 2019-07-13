@@ -1,0 +1,43 @@
+.card {
+  margin: 2.5rem auto 0;
+  border-radius: 1px;
+  width: 25rem !important;
+}
+
+.grid {
+  margin: 0;
+  min-height: 100vh;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.column {
+  display: flex !important;
+  justify-content: center !important;
+  text-align: center;
+}
+
+.card-content {
+  padding-top: 0;
+  border-top: none !important;
+}
+
+.image {
+  width: 12.5rem;
+  background-color: transparent !important;
+  padding: 1.5rem 0 0.5rem !important;
+}
+
+.link {
+  color: #3897f0;
+  cursor: pointer;
+}
+
+.message {
+  text-align: center; 
+  padding: 0.75rem;
+}

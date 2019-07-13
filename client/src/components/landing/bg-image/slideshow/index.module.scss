@@ -1,0 +1,69 @@
+.slide-one,
+.slide-two,
+.slide-three,
+.slide-four {
+	position: absolute;
+    top: 15.5%;
+    right: 14.05%;
+    width: 15.75rem;
+    height: 28.125rem;
+    background-size: cover !important;
+}
+
+.slide {
+  &-one {
+    background: url(https://i.imgur.com/gsnqZWY.jpg) no-repeat center;
+    animation: fade 20s infinite;
+    -webkit-animation: fade 20s infinite;
+  }
+  
+  &-two {
+    background: url(https://i.imgur.com/bSMUbji.jpg) no-repeat center;
+    animation: fade-two 20s infinite;
+    -webkit-animation: fade-two 20s infinite;
+  }
+  
+  &-three {
+    background: url(https://i.imgur.com/cqje9qd.jpg) no-repeat center;
+    animation: fade-three 20s infinite;
+    -webkit-animation: fade-three 20s infinite;
+  }
+  
+  &-four {
+    background: url(https://i.imgur.com/oRt8tUH.jpg) no-repeat center;
+    animation: fade-four 20s infinite;
+    -webkit-animation: fade-four 20s infinite;
+  }
+}
+
+@keyframes fade {
+  0% { opacity: 1 }
+  25% { opacity: 0}
+  50% { opacity: 0}
+  75% { opacity: 0}
+  100% { opacity: 1}
+}
+
+@keyframes fade-two {
+  0% { opacity: 0 }
+  25% { opacity: 1}
+  50% { opacity: 0 }
+  75% { opacity: 0 }
+  100% { opacity: 0}
+}
+
+@keyframes fade-three {
+  0% { opacity: 0 }
+  25% { opacity: 0}
+  50% { opacity: 1 }
+  75% { opacity: 0 }
+  100% { opacity: 0}
+}
+
+@keyframes fade-four {
+  0% { opacity: 0 }
+  25% { opacity: 0}
+  50% { opacity: 0 }
+  75% { opacity: 1 }
+  100% { opacity: 0}
+}

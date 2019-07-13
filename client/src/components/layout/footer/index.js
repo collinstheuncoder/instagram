@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react';
 
 import FooterLink from './footer-link';
 
-import { footer, grid, row } from './footer.module.scss';
+import { footer, grid, row } from './index.module.scss';
 
 const footerLinks = [
   { icon: 'home', path: '/' },

@@ -13,11 +13,11 @@ import './scss/index.scss';
 
 // Store config
 import configureStore from './store';
-import { LOGIN_SUCCESS } from './containers/auth/constants';
+import { LOGIN_SUCCESS } from './store/auth/constants';
 import {
   FETCH_CURRENT_USER_SUCCESS,
   FETCH_CURRENT_USER_FAILURE,
-} from './containers/users/constants';
+} from './store/users/constants';
 
 import clientReq from './auth';
 

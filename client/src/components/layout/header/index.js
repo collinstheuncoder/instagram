@@ -3,11 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Grid, Icon, Image, Modal, Search } from 'semantic-ui-react';
 
-import NewPostForm from '../../forms/NewPostForm';
+import NewPostForm from '../../forms/new-post';
 
-import { uploadPost } from '../../../containers/posts/actions';
+import { uploadPost } from '../../../store/posts/actions';
 
-import style from './header.module.scss';
+import style from './index.module.scss';
 
 function InstaHeader({ isLoggedIn, currentUser }) {
   const { column, divider, grid, header, icon, image, link, logo, row } = style;

@@ -3,7 +3,7 @@ import { object } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Grid, Icon } from 'semantic-ui-react';
 
-import { column, link, icon } from './footer.module.scss';
+import { column, link, icon } from './index.module.scss';
 
 function FooterLink({ footerLink }) {  
   return (

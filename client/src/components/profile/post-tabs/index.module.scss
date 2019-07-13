@@ -1,0 +1,33 @@
+@import '../../../scss/index';
+
+.row {
+  padding-top: 0 !important;
+  
+  @include mediumDevices {
+    margin-top: 2rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
+}
+
+.column {
+  padding: 1.5rem 0 0;
+  text-align: center;
+  border-top: 1px solid #cecece;
+  
+  @include mediumDevices {
+    margin-left: 0.5rem;    
+    margin-right: 0.5rem;
+  }
+}
+
+.link {
+  padding-top: 1.5rem;
+  text-transform: uppercase;
+  color: initial;
+  font-weight: 600;
+}
+
+.icon {
+  font-size: 1em;
+}

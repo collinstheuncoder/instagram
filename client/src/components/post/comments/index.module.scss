@@ -1,0 +1,23 @@
+@import '../../../scss/index';
+
+.comments {
+  padding: 0 2rem 1rem;
+  
+  @include mediumDevices {
+    padding-bottom: 0;
+  }
+}
+
+.load {
+  margin: 0 0 0.5rem;
+  color: #808080;
+  cursor: pointer;
+}
+
+.added-by {
+  color: inherit;
+}
+
+.list {
+  margin-top: 0.5rem !important;
+}

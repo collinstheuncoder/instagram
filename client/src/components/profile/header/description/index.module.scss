@@ -1,0 +1,26 @@
+@import '../../../../scss/index';
+
+.row {
+  padding: 1rem;
+  
+  @include mediumDevices {
+    padding-top: 0;    
+    padding-left: 0;
+  }
+}
+
+.text {
+  margin: 0 0 0.25rem !important;
+  
+  &--name {
+    font-weight: 600;
+  }
+}
+
+.link {
+  color: #333333;
+  
+  &--follower {
+    font-weight: 600;
+  }
+}

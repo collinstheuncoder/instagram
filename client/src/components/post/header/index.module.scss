@@ -1,0 +1,29 @@
+@import '../../../scss/index';
+
+.content {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  margin: 0 1rem;
+  color: inherit;
+}
+
+.avatar {
+  margin-bottom: 0 !important;
+  border-radius: 50%;
+}
+
+.handle {
+  font-size: 1rem;
+}
+
+.follow {
+  font-weight: 600;
+  color: #03A9F4;
+  cursor: pointer;
+}

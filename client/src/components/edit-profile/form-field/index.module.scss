@@ -4,12 +4,12 @@
 }
 
 .label {
-  display: flex;
+  display: flex !important;
   justify-content: flex-end;
   flex-basis: 25%;
-  text-transform: capitalize;
+  text-transform: capitalize !important;
   text-align: right;
-  margin-right: 1.5rem;
+  margin-right: 1.5rem !important;
 }
 
 .input {

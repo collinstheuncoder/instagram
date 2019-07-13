@@ -38,7 +38,7 @@ class EditProfilePage extends Component {
                   fontWeight: 600,
                   backgroundColor: '#fafafa',
                 }}
-                to="/accounts/edit"
+                to={`/${currentUser.username}/edit`}
                 exact
               >
                 Edit Profile
@@ -50,7 +50,7 @@ class EditProfilePage extends Component {
                   fontWeight: 600,
                   backgroundColor: '#fafafa',
                 }}
-                to="/accounts/edit/change-password"
+                to={`/${currentUser.username}/edit/change-password`}
               >
                 Change Password
               </NavLink>
@@ -58,7 +58,7 @@ class EditProfilePage extends Component {
             <Grid.Column className={style['column-right']} width={12}>
               <Switch>
                 <Route
-                  path="/accounts/edit"
+                  path="/:handle/edit"
                   exact
                   component={() => (
                     <GeneralInfo
@@ -69,7 +69,7 @@ class EditProfilePage extends Component {
                   )}
                 />
                 <Route
-                  path="/accounts/edit/change-password"
+                  path="/:handle/edit/change-password"
                   component={() => (
                     <ChangePassword
                       changePassword={changePassword}

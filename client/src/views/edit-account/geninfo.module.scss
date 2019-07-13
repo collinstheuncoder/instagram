@@ -1,0 +1,68 @@
+.grid {
+  margin: 0,
+}
+
+.column {
+  padding: 0,
+}
+
+.form {
+  margin: auto;
+  max-width: 30rem;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  display: flex;
+  justify-content: flex-end;
+  flex-basis: 25%;
+  text-transform: capitalize;
+  text-align: right;
+  margin-right: 1.5rem;
+}
+
+.input {
+  flex-basis: 75%
+}
+
+.image {
+  margin-bottom: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.change-photo {
+  margin: 0;
+  color: #3897f0;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.modal {
+  background-color: transparent;
+  text-align: center;
+  box-shadow: none;
+  color: #ffffff;
+
+  .header {
+    background-color: transparent;
+    color: #ffffff;
+  }
+
+  .content {
+    background-color: transparent;
+    font-size: 1.15rem;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+  }
+}

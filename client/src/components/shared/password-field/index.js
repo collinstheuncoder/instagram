@@ -20,11 +20,11 @@ class PasswordField extends Component {
 
     return (
       <Form.Field className={style.field}>
-        <Grid.Row>
-          <Grid.Column width={6}>
+        <Grid.Row className={style.row}>
+          <Grid.Column className={style.col}>
             <label className={style['label']}>{label}</label>
           </Grid.Column>
-          <Grid.Column width={10}>
+          <Grid.Column  className={style.col}>
             <Input
               className={style.input}
               type={showPassword ? 'text' : 'password'}

@@ -33,11 +33,7 @@ class EditProfilePage extends Component {
             <Grid.Column className={style['column-left']}>
               <NavLink
                 className={link}
-                activeStyle={{
-                  borderLeft: '0.125rem solid #333333',
-                  fontWeight: 600,
-                  backgroundColor: '#fafafa',
-                }}
+                activeClassName={style['link--active']}
                 to={`/${currentUser.username}/edit`}
                 exact
               >
@@ -45,11 +41,7 @@ class EditProfilePage extends Component {
               </NavLink>
               <NavLink
                 className={link}
-                activeStyle={{
-                  borderLeft: '0.125rem solid #333333',
-                  fontWeight: 600,
-                  backgroundColor: '#fafafa',
-                }}
+                activeClassName={style['link--active']}
                 to={`/${currentUser.username}/edit/change-password`}
               >
                 Change Password

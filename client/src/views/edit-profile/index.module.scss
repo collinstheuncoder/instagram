@@ -2,37 +2,75 @@
 
 .grid {
   justify-content: center !important;
-  margin: 2rem 0 !important;
+  margin: 1rem !important;
 
   @include largeDevices {
-    margin: 4rem 0 !important;
+    margin: 2rem 0 !important;
   }
 }
 
 .card {
   width: 100% !important;
+  
+  @include mediumDevices {
+    max-width: 50rem !important;
+  }
 }
 
 .row {
   display: flex;
+  flex-direction: column;
+  
+  @include mediumDevices {
+    flex-direction: row;
+  }
 }
 
 .column {
   &-left {
     padding: 0;
     display: flex;
-    flex-direction: column;
-    flex-basis: 30%;
-    border-right: 1px solid #dcdcdc;
+    flex-direction: row;
+    flex-basis: 100%;
+    border-bottom: 1px solid #dcdcdc;
+    
+    @include mediumDevices {
+      flex-direction: column;
+      flex-basis: 30%;
+      border-right: 1px solid #dcdcdc;
+      border-bottom: none;
+    }
   }
 
   &-right {
-    flex-basis: 70%;
+    flex-basis: 100%;
     padding: 2rem;
+    
+    @include mediumDevices {
+      flex-basis: 70%;
+    }
   }
 }
 
 .link {
   padding: 1.5rem;
   color: inherit;
+  width: 50%;
+  text-align: center;
+  
+  @include mediumDevices {
+    width: 100%;
+    text-align: left;
+  }
+  
+  &--active {
+    border-bottom: 0.125rem solid #333333;
+    font-weight: 600;
+    background-color: #fafafa;
+    
+    @include mediumDevices {
+      border-left: 0.125rem solid #333333;
+      border-bottom: none;
+    }
+  }
 }

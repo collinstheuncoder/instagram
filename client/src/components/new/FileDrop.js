@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import Dropzone from 'react-dropzone';
 
 class FileDrop extends Component {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { func, string } from 'prop-types';
 import { Form, Icon, Input } from 'semantic-ui-react';
-
-import EmojiPack from '../shared/EmojiPack';
+import { Picker } from 'emoji-mart';
+import 'emoji-mart/css/emoji-mart.css';
 
 import { form, icon, input } from './comment-form.module.scss';
 
@@ -23,6 +23,27 @@ class CommentForm extends Component {
     this.setState(prevState => ({
       displayEmojisList: !prevState.displayEmojisList,
     }));
+
+  onSelectEmoji = e => {
+    if (e.unified.length <= 5){
+      const emoji = String.fromCodePoint(`0x${e.unified}`);
+      
+      this.setState({
+        comment: this.state.text + emoji
+      })
+    } else {
+      const sym = e.unified.split('-');
+      const codesArray = [];
+      
+      sym.forEach(el => codesArray.push('0x' + el));
+      
+      const emoji = String.fromCodePoint(...codesArray);
+      
+      this.setState({
+        comment: this.state.comment + emoji
+      })
+    }
+  }
 
   onLeaveComment = e => {
     e.preventDefault();
@@ -59,7 +80,7 @@ class CommentForm extends Component {
           placeholder="Add a comment..."
           onChange={this.onChange}
         />
-        {displayEmojisList && <EmojiPack />}
+        {displayEmojisList && <Picker onSelect={this.onSelectEmoji} />}
       </Form>
     );
   }

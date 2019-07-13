@@ -29,7 +29,7 @@ class LoginForm extends Component {
     e.preventDefault();
     const { username, password } = this.state;
     const { loginUser, history } = this.props;
-
+    
     if (username && password) {
       loginUser(
         username.trim(),

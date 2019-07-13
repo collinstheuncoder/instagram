@@ -26,8 +26,8 @@ function InstaMain() {
         <Route exact path="/new" component={requireAuth(NewPostPage)} />
         <Route path="/accounts/signup" component={noAuthRequired(SignupPage)} />
         <Route path="/accounts/login" component={noAuthRequired(LoginPage)} />
-        <Route path="/accounts/edit" component={requireAuth(EditProfilePage)} />
         <Route exact path="/:handle" component={ProfilePage} />
+        <Route path="/:handle/edit" component={requireAuth(EditProfilePage)} />
         <Route path="/:handle/p/:postId" component={PostPage} />
         <Route component={NotFoundPage} />
       </Switch>

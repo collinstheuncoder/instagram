@@ -76,7 +76,10 @@ class ProfileHeader extends Component {
             <Grid.Row style={{ padding: 0 }} className={row} columns={2}>
               {isCurrentUser ? (
                 <Fragment>
-                  <Link className={style['edit-link']} to="/accounts/edit">
+                  <Link
+                    className={style['edit-link']}
+                    to={`/${profile.username}/edit`}
+                  >
                     Edit Profile
                   </Link>
                   <Modal
@@ -137,7 +140,11 @@ class ProfileHeader extends Component {
             </Grid.Row>
           </div>
           <div className={desc}>
-            <ProfileStats profile={profile} currentUserId={currentUserId} followUser={followUser} />
+            <ProfileStats
+              profile={profile}
+              currentUserId={currentUserId}
+              followUser={followUser}
+            />
             <ProfileDescription profile={profile} />
           </div>
         </Grid.Column>

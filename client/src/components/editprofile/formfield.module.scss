@@ -1,0 +1,17 @@
+.field {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  display: flex;
+  justify-content: flex-end;
+  flex-basis: 25%;
+  text-transform: capitalize;
+  text-align: right;
+  margin-right: 1.5rem;
+}
+
+.input {
+  flex-basis: 75%;
+}

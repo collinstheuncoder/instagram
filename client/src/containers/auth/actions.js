@@ -43,7 +43,7 @@ export const loginUser = (username, password, history) => async dispatch => {
   dispatch({
     type: actionTypes.LOGIN_REQUEST,
   });
-
+  
   try {
     const { data: { token } } = await request.post('/auth/login', {
       username,

@@ -7,7 +7,7 @@
   bottom: 0;
   z-index: 1;
   
-  @include largeDevices {
+  @include mediumDevices {
     display: none;
   }
 }

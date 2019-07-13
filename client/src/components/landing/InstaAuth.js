@@ -76,12 +76,6 @@ class InstAuth extends Component {
   }
 }
 
-InstAuth.defaultProps = {
-  createAccount: () => 'Create Account',
-  loginUser: () => 'Login to Account',
-  isLoading: false,
-};
-
 InstAuth.propTypes = {
   createAccount: func.isRequired,
   loginUser: func.isRequired,

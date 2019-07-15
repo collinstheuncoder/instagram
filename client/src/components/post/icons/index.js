@@ -7,9 +7,9 @@ import style from './index.module.scss';
 function PostIcons({
   isLiked,
   isBookmarked,
-  likePost,
-  bookmarkPost,
-  isCommentSectionDisplayed,
+  onLikePost,
+  onBookmarkPost,
+  onShowCommentSection
 }) {
   const { bookmark } = style;
   
@@ -20,24 +20,24 @@ function PostIcons({
           className={`${style['main-icon']} ${style['like-icon']}`}
           name={isLiked ? 'heart' : 'empty heart'}
           color={isLiked ? 'red' : false}
-          onClick={likePost}
+          onClick={onLikePost}
         />
         <Icon
           className={`${style['main-icon']} ${style['comment-icon']}`}
           name="comment outline"
-          onClick={isCommentSectionDisplayed}
+          onClick={onShowCommentSection}
         />
       </Grid.Column>
       <Grid.Column>
         <Icon
           className={`${style['main-icon']} ${bookmark}`}
           name={isBookmarked ? 'bookmark' : 'bookmark outline'}
-          onClick={bookmarkPost}
+          onClick={onBookmarkPost}
         />
       </Grid.Column>
     </Grid.Row>
   );
-}
+} 
 
 PostIcons.defaultProps = {
   isLiked: false,
@@ -47,9 +47,9 @@ PostIcons.defaultProps = {
 PostIcons.propTypes = {
   isLiked: bool.isRequired,
   isBookmarked: bool.isRequired,
-  likePost: func.isRequired,
-  bookmarkPost: func.isRequired,
-  isCommentSectionDisplayed: func.isRequired,
+  onLikePost: func.isRequired,
+  onBookmarkPost: func.isRequired,
+  onShowCommentSection: func.isRequired,
 };
 
 export default PostIcons;

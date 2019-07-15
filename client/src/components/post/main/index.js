@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { object } from 'prop-types';
+import { bool, func, object, string } from 'prop-types';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { Divider } from 'semantic-ui-react';
@@ -56,31 +56,31 @@ class PostMain extends Component {
       commentOnPost,
     } = this.props;
 
-    const { isLiked, isBookmarked, commentsLimit, isCommentSectionDisplayed } = this.state;
+    const {
+      isLiked,
+      isBookmarked,
+      commentsLimit,
+      isCommentSectionDisplayed,
+    } = this.state;
 
     // Time elapsed since post creation
     const timeSincePostCreation = createdAt => {
       const formattedDate = date => new Date(date).toLocaleDateString();
 
       return moment(formattedDate(createdAt), 'MM/DD/YYYY').fromNow();
-    }; 
-    
-    const {
-      caption,
-      date,
-      divider,
-      likes
-    } = style;
+    };
+
+    const { caption, date, divider, likes } = style;
 
     return (
       <Fragment>
         <div className={style['icons--small']}>
-          <PostIcons 
-            isLiked={isLiked} 
-            isBookmarked={isBookmarked} 
-            likePost={this.onLikePost} 
-            bookmarkPost={this.onBookmarkPost} 
-            isCommentSectionDisplayed={isCommentSectionDisplayed}
+          <PostIcons
+            isLiked={isLiked}
+            isBookmarked={isBookmarked}
+            onLikePost={this.onLikePost}
+            onBookmarkPost={this.onBookmarkPost}
+            onShowCommentSection={this.onShowCommentSection}
           />
         </div>
         <p className={`${likes} ${style['likes--small']}`}>
@@ -91,7 +91,10 @@ class PostMain extends Component {
         </p>
         {!isHomepage && <Divider className={divider} />}
         {post.caption && (
-          <p style={isHomepage ? { padding: '0 1rem' } : {}} className={caption}>
+          <p
+            style={isHomepage ? { padding: '0 1rem' } : {}}
+            className={caption}
+          >
             <Link
               to={`/${handle || post.uploadedBy.username}`}
               style={{ color: 'inherit' }}
@@ -101,17 +104,14 @@ class PostMain extends Component {
             {post.caption}
           </p>
         )}
-        <PostComments
-          comments={post.comments}
-          commentsLimit={commentsLimit}
-        />
+        <PostComments comments={post.comments} commentsLimit={commentsLimit} />
         <div className={style['icons--large']}>
-          <PostIcons 
-            isLiked={isLiked} 
-            isBookmarked={isBookmarked} 
-            likePost={this.onLikePost} 
-            bookmarkPost={this.onBookmarkPost} 
-            isCommentSectionDisplayed={isCommentSectionDisplayed}
+          <PostIcons
+            isLiked={isLiked}
+            isBookmarked={isBookmarked}
+            onLikePost={this.onLikePost}
+            onBookmarkPost={this.onBookmarkPost}
+            onShowCommentSection={this.onShowCommentSection}
           />
         </div>
         <p className={`${likes} ${style['likes--large']}`}>
@@ -120,19 +120,26 @@ class PostMain extends Component {
             {post.likedBy.length > 1 ? 's' : ''}
           </strong>
         </p>
-        <p style={isHomepage ? { padding: '1rem 1rem 0' } : {}} className={date}>
+        <p
+          style={isHomepage ? { padding: '1rem 1rem 0' } : {}}
+          className={date}
+        >
           {timeSincePostCreation(post.createdAt)}
         </p>
-        {isLoggedIn ? (
-          <CommentForm
-            commentOnPost={commentOnPost}
-            userId={currentUser._id}
-            postId={post._id}
-          />
-        ) : (
-          <p style={{ margin: '0 1rem 1.25rem' }}>
-            <Link to="/accounts/login">Log in</Link> to like or comment.
-          </p>
+        {isCommentSectionDisplayed && (
+          <Fragment>
+            {isLoggedIn ? (
+              <CommentForm
+                commentOnPost={commentOnPost}
+                userId={currentUser._id}
+                postId={post._id}
+              />
+            ) : (
+              <p style={{ margin: '0 1rem 1.25rem' }}>
+                <Link to="/accounts/login">Log in</Link> to like or comment.
+              </p>
+            )}
+          </Fragment>
         )}
       </Fragment>
     );
@@ -140,8 +147,16 @@ class PostMain extends Component {
 }
 
 PostMain.propTypes = {
-  currentUser: object.isRequired,
   post: object.isRequired,
+  currentUser: object.isRequired,
+  handle: string,
+  isHomepage: bool.isRequired,
+  isLoggedIn: bool.isRequired,
+  likePost: func,
+  bookmarkPost: func,
+  commentOnPost: func.isRequired,
+  deleteComment: func.isRequired,
+  removePost: func.isRequired,
 };
 
 export default PostMain;

@@ -1,0 +1,92 @@
+@import '../../scss/index';
+
+.home {
+  margin: 0;  
+  
+  @include largeDevices {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.posts {
+  width: 100%;
+  
+  &-row {
+    padding-top: 0 !important;
+    flex-direction: column !important;
+  }
+  
+  @include largeDevices {
+    max-width: 65%;
+    margin-right: 2.5rem;
+  }
+}
+
+.grid {
+  justify-content: center;
+}
+
+.post {
+  margin-bottom: 2.5rem;
+  
+  @include largeDevices {
+    margin-bottom: 3.5rem;
+  }
+}
+
+.card {
+  width: 100% !important;
+  border-radius: 0 !important;
+}
+
+.col {
+  &-image {
+    padding: 0;
+    height: 25rem;
+    background-position: center;
+    background-size: cover;
+    
+    @include mediumDevices {
+      height: 30rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    @include largeDevices {
+      height: 35rem;
+    }
+  }
+}
+
+.aside {
+  display: none;
+  
+  @include largeDevices {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 30%;
+  }
+  
+  &-row {
+    padding-top: 0.75rem; 
+    align-items: center;
+  }
+}
+
+.link {
+  color: inherit;
+  font-weight: 600;
+}
+
+.image {
+  margin-bottom: 0;
+  width: 3.5rem;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ababab;
+}

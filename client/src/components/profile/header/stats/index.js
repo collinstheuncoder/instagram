@@ -10,7 +10,7 @@ const formatNumber = number => {
   if (number >= 1000000) {
     number = number / 1000000;
     const strgdNum = String(number);
-    
+
     // eslint-disable-next-line
     return strgdNum.charAt(strgdNum.indexOf('.') + 1) == 0
       ? `${Math.floor(number)}m`
@@ -18,7 +18,7 @@ const formatNumber = number => {
   } else if (number >= 10000 && number < 1000000) {
     number = number / 1000;
     const strgdNum = String(number);
-    
+
     // eslint-disable-next-line
     return strgdNum.charAt(strgdNum.indexOf('.') + 1) == 0
       ? `${Math.floor(number)}k`
@@ -40,7 +40,7 @@ function ProfileStats({ profile, currentUserId, followUser }) {
       <Grid.Column className={column}>
         <FollowsModal
           follows={profile.followers}
-          title="Followers"
+          title='Followers'
           currentUserId={currentUserId}
           followUser={followUser}
         />
@@ -48,7 +48,7 @@ function ProfileStats({ profile, currentUserId, followUser }) {
       <Grid.Column className={column}>
         <FollowsModal
           follows={profile.following}
-          title="Following"
+          title='Following'
           currentUserId={currentUserId}
           followUser={followUser}
         />

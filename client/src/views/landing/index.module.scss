@@ -13,15 +13,16 @@
 .column {
   &--bg-img {
     display: none !important;
-    
+
     @include largeDevices {
       display: block !important;
+      margin-top: -5rem !important;
     }
   }
-  
+
   &--auth {
     flex-basis: 100%;
-    
+
     @include largeDevices {
       flex-basis: 50%;
     }

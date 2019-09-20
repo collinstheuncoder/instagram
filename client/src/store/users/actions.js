@@ -1,8 +1,8 @@
 import * as actionTypes from './constants';
 
-import clientReq from '../../auth';
+import authRequest from '../../auth-req';
 
-const request = clientReq();
+const request = authRequest();
 
 // Fetch all users
 export const fetchAllUsers = token => async dispatch => {
@@ -11,7 +11,9 @@ export const fetchAllUsers = token => async dispatch => {
   });
 
   try {
-    const { data: { users } } = await request.get(`/users`);
+    const {
+      data: { users },
+    } = await request.get(`/users`);
 
     dispatch({
       type: actionTypes.FETCH_ALL_USERS_SUCCESS,
@@ -23,13 +25,15 @@ export const fetchAllUsers = token => async dispatch => {
 };
 
 // Fetch current (logged in) user profile
-export const fetchCurrentUser = token => async dispatch => {
+export const fetchCurrentUser = () => async dispatch => {
   dispatch({
     type: actionTypes.FETCH_CURRENT_USER_REQUEST,
   });
 
   try {
-    const { data: { user } } = await request.get(`/users/me`);
+    const {
+      data: { user },
+    } = await request.get(`/users/me`);
 
     dispatch({
       type: actionTypes.FETCH_CURRENT_USER_SUCCESS,
@@ -47,7 +51,9 @@ export const fetchUserByHandle = handle => async dispatch => {
   });
 
   try {
-    const { data: { user } } = await request.get(`/users/${handle}`);
+    const {
+      data: { user },
+    } = await request.get(`/users/${handle}`);
 
     dispatch({
       type: actionTypes.FETCH_USER_BY_HANDLE_SUCCESS,
@@ -62,14 +68,18 @@ export const fetchUserByHandle = handle => async dispatch => {
 };
 
 // Edit and update user profile
-export const updateUserInfo = (handle, updateInfo, history) => async dispatch => {
+export const updateUserInfo = (
+  handle,
+  updateInfo,
+  history
+) => async dispatch => {
   dispatch({
     type: actionTypes.EDIT_USER_REQUEST,
   });
 
   try {
-    const { data }  = await request.patch(`/users/${handle}/update`, {
-      updateInfo
+    const { data } = await request.patch(`/users/${handle}/update`, {
+      updateInfo,
     });
 
     dispatch({
@@ -85,14 +95,18 @@ export const updateUserInfo = (handle, updateInfo, history) => async dispatch =>
 };
 
 // Change password
-export const changePassword = (handle, passwordInfo, history) => async dispatch => {
+export const changePassword = (
+  handle,
+  passwordInfo,
+  history
+) => async dispatch => {
   dispatch({
     type: actionTypes.CHANGE_PASSWORD_REQUEST,
   });
 
   try {
     const { data } = await request.patch(`/users/${handle}/change-pwd`, {
-      passwordInfo
+      passwordInfo,
     });
 
     dispatch({

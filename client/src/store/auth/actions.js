@@ -1,23 +1,27 @@
 import * as actionTypes from './constants';
+import { FETCH_CURRENT_USER_SUCCESS } from '../users/constants';
 
-import clientReq from '../../auth';
+import authRequest from '../../auth-req';
 
-const request = clientReq();
+const request = authRequest();
 
 // Create account
 export const createAccount = (
   fullname,
   username,
   email,
-  password,
-  history
+  password
 ) => async dispatch => {
   dispatch({
     type: actionTypes.CREATE_ACCOUNT_REQUEST,
   });
 
   try {
-    const { data: { newUser: { token } } } = await request.post('/auth/signup', {
+    const {
+      data: {
+        newUser: { token, user },
+      },
+    } = await request.post('/auth/signup', {
       fullname,
       username,
       email,
@@ -29,23 +33,26 @@ export const createAccount = (
 
     dispatch({
       type: actionTypes.CREATE_ACCOUNT_SUCCESS,
-    }); 
-
-    // Redirect to Home page upon successful registration
-    history.push('/home');
+    });
+    dispatch({
+      type: FETCH_CURRENT_USER_SUCCESS,
+      payload: user,
+    });
   } catch (error) {
     dispatch({ type: actionTypes.CREATE_ACCOUNT_FAILURE, payload: error });
   }
 };
 
 // Login to account
-export const loginUser = (username, password, history) => async dispatch => {
+export const loginUser = (username, password) => async dispatch => {
   dispatch({
     type: actionTypes.LOGIN_REQUEST,
   });
 
   try {
-    const { data: { token } } = await request.post('/auth/login', {
+    const {
+      data: { token, user },
+    } = await request.post('/auth/login', {
       username,
       password,
     });
@@ -56,15 +63,16 @@ export const loginUser = (username, password, history) => async dispatch => {
     dispatch({
       type: actionTypes.LOGIN_SUCCESS,
     });
-
-    // Redirect to Home page upon successful login
-    history.push('/home');
+    dispatch({
+      type: FETCH_CURRENT_USER_SUCCESS,
+      payload: user,
+    });
   } catch (error) {
     dispatch({ type: actionTypes.LOGIN_FAILURE, payload: error.message });
   }
 };
 
-//Logout 
+//Logout
 export const logout = history => async dispatch => {
   dispatch({ type: actionTypes.LOGOUT_REQUEST });
 
@@ -77,4 +85,4 @@ export const logout = history => async dispatch => {
   } catch (error) {
     dispatch({ type: actionTypes.LOGOUT_FAILURE, payload: error.message });
   }
-}
+};

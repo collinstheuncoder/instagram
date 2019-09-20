@@ -136,7 +136,7 @@ class PostMain extends Component {
               />
             ) : (
               <p style={{ margin: '0 1rem 1.25rem' }}>
-                <Link to="/accounts/login">Log in</Link> to like or comment.
+                <Link to='/accounts/login'>Log in</Link> to like or comment.
               </p>
             )}
           </Fragment>

@@ -60,46 +60,46 @@ class SignupForm extends Component {
     return (
       <Segment style={styles.segment}>
         <Button primary fluid>
-          <Icon name="facebook" /> Log in with Facebook
+          <Icon name='facebook' /> Log in with Facebook
         </Button>
         <Divider horizontal>Or</Divider>
         <Form onSubmit={this.onSubmitForm}>
           <Form.Field>
-            <input 
-              name="email" 
-              value={email} 
-              placeholder="Email" 
+            <input
+              name='email'
+              value={email}
+              placeholder='Email'
               onChange={this.onChange}
             />
           </Form.Field>
           <Form.Field>
             <input
-              name="fullname"
+              name='fullname'
               value={fullname}
-              placeholder="Full Name"
+              placeholder='Full Name'
               onChange={this.onChange}
             />
           </Form.Field>
           <Form.Field>
             <input
-              name="username"
+              name='username'
               value={username}
-              placeholder="Username"
+              placeholder='Username'
               onChange={this.onChange}
             />
           </Form.Field>
           <Form.Field>
             <input
-              type="password"
-              name="password"
+              type='password'
+              name='password'
               value={password}
-              placeholder="Password"
+              placeholder='Password'
               onChange={this.onChange}
             />
           </Form.Field>
-          <Button type="submit" primary fluid loading={isLoading}>
+          <Button type='submit' primary fluid loading={isLoading}>
             Sign up
-          </Button> 
+          </Button>
         </Form>
         {error && <p style={styles.error}>{error}</p>}
         <p style={{ textAlign: 'center', padding: '1rem' }}>

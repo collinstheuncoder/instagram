@@ -13,7 +13,7 @@ import style from './index.module.scss';
 
 function LoginPage(props) {
   const { card, grid, image, link, message, row } = style;
-
+ 
   return (
     <Grid className={grid}>
       <Grid.Row className={row}>

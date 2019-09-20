@@ -5,7 +5,7 @@ import { Grid, List } from 'semantic-ui-react';
 
 import style from './index.module.scss';
 
-function PostComments({ comments, commentsLimit }) {  
+function PostComments({ comments, commentsLimit }) {
   return (
     <Grid>
       <Grid.Row style={{ paddingTop: '0.5rem', paddingBottom: 0 }}>
@@ -18,7 +18,10 @@ function PostComments({ comments, commentsLimit }) {
               <List>
                 {comments.map(comment => (
                   <List.Item key={comment._id}>
-                    <Link className={style['added-by']} to={`/${comment.addedBy.username}`}>
+                    <Link
+                      className={style['added-by']}
+                      to={`/${comment.addedBy.username}`}
+                    >
                       <strong>{comment.addedBy.username}</strong>
                     </Link>{' '}
                     {comment.body}

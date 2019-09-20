@@ -5,17 +5,15 @@ import 'emoji-mart/css/emoji-mart.css';
 class EmojiPack extends Component {
   state = {
     emoji: '',
-  }
+  };
 
   onSelectEmoji = emoji =>
     this.setState({
       emoji: emoji.native,
-    })
+    });
 
   render() {
-    return (
-      <Picker set='emojione' onSelect={this.onSelectEmoji} />
-    )
+    return <Picker set='emojione' onSelect={this.onSelectEmoji} />;
   }
 }
 

@@ -24,7 +24,7 @@ class PasswordField extends Component {
           <Grid.Column className={style.col}>
             <label className={style['label']}>{label}</label>
           </Grid.Column>
-          <Grid.Column  className={style.col}>
+          <Grid.Column className={style.col}>
             <Input
               className={style.input}
               type={showPassword ? 'text' : 'password'}
@@ -47,10 +47,10 @@ class PasswordField extends Component {
 }
 
 PasswordField.propTypes = {
-	name: string.isRequired,
-	value: string.isRequired,
-	label: string.isRequired,
-	onChange: func.isRequired,
-}
+  name: string.isRequired,
+  value: string.isRequired,
+  label: string.isRequired,
+  onChange: func.isRequired,
+};
 
 export default PasswordField;

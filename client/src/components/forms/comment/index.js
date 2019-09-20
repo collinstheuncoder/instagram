@@ -25,25 +25,25 @@ class CommentForm extends Component {
     }));
 
   onSelectEmoji = e => {
-    if (e.unified.length <= 5){
+    if (e.unified.length <= 5) {
       const emoji = String.fromCodePoint(`0x${e.unified}`);
-      
+
       this.setState({
-        comment: this.state.text + emoji
-      })
+        comment: this.state.text + emoji,
+      });
     } else {
       const sym = e.unified.split('-');
       const codesArray = [];
-      
+
       sym.forEach(el => codesArray.push('0x' + el));
-      
+
       const emoji = String.fromCodePoint(...codesArray);
-      
+
       this.setState({
-        comment: this.state.comment + emoji
-      })
+        comment: this.state.comment + emoji,
+      });
     }
-  }
+  };
 
   onLeaveComment = e => {
     e.preventDefault();
@@ -69,15 +69,15 @@ class CommentForm extends Component {
           icon={
             <Icon
               className={icon}
-              size="large"
-              name="smile outline"
+              size='large'
+              name='smile outline'
               link
               onClick={this.onToggleEmojisList}
             />
           }
-          name="comment"
+          name='comment'
           value={comment}
-          placeholder="Add a comment..."
+          placeholder='Add a comment...'
           onChange={this.onChange}
         />
         {displayEmojisList && <Picker onSelect={this.onSelectEmoji} />}

@@ -4,19 +4,19 @@ import Dropzone from 'react-dropzone';
 
 class FileDrop extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      files: []
-    }
+      files: [],
+    };
   }
 
   onDrop(files) {
-    this.setState({files});
+    this.setState({ files });
   }
 
   onCancel() {
     this.setState({
-      files: []
+      files: [],
     });
   }
 
@@ -25,7 +25,7 @@ class FileDrop extends Component {
       <li key={file.name}>
         {file.name} - {file.size} bytes
       </li>
-    ))
+    ));
 
     return (
       <section>
@@ -33,10 +33,10 @@ class FileDrop extends Component {
           onDrop={this.onDrop.bind(this)}
           onFileDialogCancel={this.onCancel.bind(this)}
         >
-          {({getRootProps, getInputProps}) => (
+          {({ getRootProps, getInputProps }) => (
             <div {...getRootProps()}>
               <input {...getInputProps()} />
-                <p>Drop files here, or click to select files</p>
+              <p>Drop files here, or click to select files</p>
             </div>
           )}
         </Dropzone>
@@ -51,10 +51,9 @@ class FileDrop extends Component {
 
 export default FileDrop;
 
-
 //class FileDrop extends Component {
 //  onDrop = (acceptedFiles, rejectedFiles) => {
-//    console.log(acceptedFiles);    
+//    console.log(acceptedFiles);
 //    console.log(rejectedFiles);
 //  };
 //

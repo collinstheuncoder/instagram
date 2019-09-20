@@ -5,7 +5,7 @@ import { Image } from 'semantic-ui-react';
 import { image } from './index.module.scss';
 
 function PostPhoto({ photo, likePost }) {
-  return <Image className={image} src={photo} size="huge" />;
+  return <Image className={image} src={photo} size='huge' />;
 }
 
 PostPhoto.propTypes = {

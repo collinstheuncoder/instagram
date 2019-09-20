@@ -5,16 +5,23 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 
 import { avatar, content, follow, link } from './index.module.scss';
 
-function PostHeader({ currentUser, profile, handle, imgUrl, isHomepage, followUser }) {
+function PostHeader({
+  currentUser,
+  profile,
+  handle,
+  imgUrl,
+  isHomepage,
+  followUser,
+}) {
   const isFollowing = (user, profile) => profile.followers.includes(user._id);
-  
+
   return (
     <Card.Content className={content}>
       <Link to={`/${handle}`} className={link}>
         <Image
           className={avatar}
-          floated="left"
-          size="mini"
+          floated='left'
+          size='mini'
           src={
             `/images/profile/${imgUrl || profile.imgUrl}` || 'images/gsw-kd.png'
           }
@@ -25,8 +32,9 @@ function PostHeader({ currentUser, profile, handle, imgUrl, isHomepage, followUs
       </Link>
       {!isHomepage && (
         <Fragment>
-          <Icon name="circle" size="tiny" />
-          {(currentUser.username !== handle || !isFollowing(currentUser, profile)) && (
+          <Icon name='circle' size='tiny' />
+          {(currentUser.username !== handle ||
+            !isFollowing(currentUser, profile)) && (
             <p
               className={follow}
               onClick={() => followUser(handle, currentUser._id)}
@@ -35,7 +43,7 @@ function PostHeader({ currentUser, profile, handle, imgUrl, isHomepage, followUs
             </p>
           )}
         </Fragment>
-      )} 
+      )}
     </Card.Content>
   );
 }

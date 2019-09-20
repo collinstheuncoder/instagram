@@ -19,10 +19,10 @@ import {
   FETCH_CURRENT_USER_FAILURE,
 } from './store/users/constants';
 
-import clientReq from './auth';
+import authRequest from './auth-req';
 
 // Attach token to request headers
-const request = clientReq();
+const request = authRequest();
   
 // Create store
 const store = configureStore();

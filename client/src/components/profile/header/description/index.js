@@ -25,8 +25,8 @@ function ProfileDescription({ profile }) {
         <p className={style.text}>
           <a
             href={webLink(profile.website)}
-            target="_blank"
-            rel="noopener noreferrer"
+            target='_blank'
+            rel='noopener noreferrer'
           >
             {profile.website}
           </a>
@@ -34,14 +34,14 @@ function ProfileDescription({ profile }) {
         <p className={style.text}>
           Followed by{' '}
           <Link
-            to="/accounts/easymoneysniper"
+            to='/accounts/easymoneysniper'
             className={`${style.link} ${style['link--follower']}`}
           >
             easymoneysniper
           </Link>{' '}
           and{' '}
           <Link
-            to="/accounts/russwb"
+            to='/accounts/russwb'
             className={`${style.link} ${style['link--follower']}`}
           >
             russwb

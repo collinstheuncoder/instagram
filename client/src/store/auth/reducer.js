@@ -15,14 +15,14 @@ function auth(state = INITIAL_STATE, { type, payload }) {
         ...state,
         isLoading: false,
         isLoggedIn: true,
-        error: null
+        error: null,
       };
     case actionTypes.CREATE_ACCOUNT_FAILURE:
-      return { 
-      	...state, 
-      	isLoading: false, 
-      	isLoggedIn: false,
-      	error: payload 
+      return {
+        ...state,
+        isLoading: false,
+        isLoggedIn: false,
+        error: payload,
       };
     case actionTypes.LOGIN_REQUEST:
       return { ...state, isLoading: true };
@@ -31,14 +31,14 @@ function auth(state = INITIAL_STATE, { type, payload }) {
         ...state,
         isLoading: false,
         isLoggedIn: true,
-        error: null
+        error: null,
       };
     case actionTypes.LOGIN_FAILURE:
-      return { 
-      	...state, 
-      	isLoading: false, 
-      	isLoggedIn: false,
-      	error: payload
+      return {
+        ...state,
+        isLoading: false,
+        isLoggedIn: false,
+        error: payload,
       };
     case actionTypes.LOGOUT_REQUEST:
       return { ...state, isLoading: true };
@@ -47,14 +47,14 @@ function auth(state = INITIAL_STATE, { type, payload }) {
         ...state,
         isLoading: false,
         isLoggedIn: false,
-        error: null
+        error: null,
       };
     case actionTypes.LOGOUT_FAILURE:
-      return { 
-        ...state, 
-        isLoading: false, 
+      return {
+        ...state,
+        isLoading: false,
         isLoggedIn: true,
-        error: payload
+        error: payload,
       };
     default:
       return state;

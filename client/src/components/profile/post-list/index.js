@@ -20,10 +20,10 @@ function PostList({ posts, handle }) {
           <Grid.Column className={column}>
             <div className={stats}>
               <span>
-                <Icon name="heart" size="large" /> {post.likedBy.length}
+                <Icon name='heart' size='large' /> {post.likedBy.length}
               </span>
               <span>
-                <Icon name="comment" size="large" /> {post.comments.length}
+                <Icon name='comment' size='large' /> {post.comments.length}
               </span>
             </div>
           </Grid.Column>

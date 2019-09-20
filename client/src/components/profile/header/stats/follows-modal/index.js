@@ -26,12 +26,14 @@ const renderFollowsList = (users, currentUserId, followUser) => {
                 {user.username}
               </Link>
             </List.Header>
-            <List.Description className={style.description}>{user.fullname}</List.Description>
+            <List.Description className={style.description}>
+              {user.fullname}
+            </List.Description>
           </List.Content>
           <Button
             style={{ width: 'auto' }}
             className={`${style.button} ${isFollowing &&
-                        style['button--is-following']}`}
+              style['button--is-following']}`}
             primary={!isFollowing}
             onClick={() => followUser(user.username, currentUserId)}
           >
@@ -51,7 +53,7 @@ function FollowsModal({ follows, title, currentUserId, followUser }) {
     if (number >= 1000000) {
       number = number / 1000000;
       const strgdNum = String(number);
-      
+
       // eslint-disable-next-line
       return strgdNum.charAt(strgdNum.indexOf('.') + 1) == 0
         ? `${Math.floor(number)}m`
@@ -59,7 +61,7 @@ function FollowsModal({ follows, title, currentUserId, followUser }) {
     } else if (number >= 10000 && number < 1000000) {
       number = number / 1000;
       const strgdNum = String(number);
-      
+
       // eslint-disable-next-line
       return strgdNum.charAt(strgdNum.indexOf('.') + 1) == 0
         ? `${Math.floor(number)}k`
@@ -68,10 +70,10 @@ function FollowsModal({ follows, title, currentUserId, followUser }) {
       return number;
     }
   };
-  
+
   return (
     <Modal
-      size="mini"
+      size='mini'
       trigger={
         <div>
           <p style={{ color: 'initial' }} className={text}>
@@ -83,22 +85,15 @@ function FollowsModal({ follows, title, currentUserId, followUser }) {
     >
       <Header className={style['follows--header']}>
         <h3 className={heading}>{title}</h3>
-        <span
-          className={close}
-          aria-label="Close Followers List Modal"
-        >
+        <span className={close} aria-label='Close Followers List Modal'>
           &times;
         </span>
       </Header>
       <Modal.Content className={style['follows--main']}>
-        {renderFollowsList(
-          follows,
-          currentUserId,
-          followUser
-        )}
+        {renderFollowsList(follows, currentUserId, followUser)}
       </Modal.Content>
     </Modal>
-  )
+  );
 }
 
 FollowsModal.propTypes = {
@@ -106,6 +101,6 @@ FollowsModal.propTypes = {
   title: string.isRequired,
   currentUserId: string.isRequired,
   followUser: func.isRequired,
-}
+};
 
 export default FollowsModal;

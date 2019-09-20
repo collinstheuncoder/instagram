@@ -9,10 +9,10 @@ function PostIcons({
   isBookmarked,
   onLikePost,
   onBookmarkPost,
-  onShowCommentSection
+  onShowCommentSection,
 }) {
   const { bookmark } = style;
-  
+
   return (
     <Grid.Row columns={2} className={style.row}>
       <Grid.Column>
@@ -24,7 +24,7 @@ function PostIcons({
         />
         <Icon
           className={`${style['main-icon']} ${style['comment-icon']}`}
-          name="comment outline"
+          name='comment outline'
           onClick={onShowCommentSection}
         />
       </Grid.Column>
@@ -37,7 +37,7 @@ function PostIcons({
       </Grid.Column>
     </Grid.Row>
   );
-} 
+}
 
 PostIcons.defaultProps = {
   isLiked: false,

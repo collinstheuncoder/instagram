@@ -24,12 +24,12 @@ class InstAuth extends Component {
 
     return (
       <div className={grid}>
-        <div className="row">
+        <div className='row'>
           <div className={column}>
             <Card className={card}>
               <Image
-                src="https://imgur.com/3aCDD3O.jpg"
-                size="small"
+                src='https://imgur.com/3aCDD3O.jpg'
+                size='small'
                 centered
                 className={image}
               />

@@ -66,7 +66,7 @@ class ProfileHeader extends Component {
           <Image
             src={`/images/profile/${profile.imgUrl}` || '/images/gsw-kd.png'}
             alt={profile.fullname}
-            size="huge"
+            size='huge'
             className={image}
           />
         </Grid.Column>
@@ -83,12 +83,12 @@ class ProfileHeader extends Component {
                     Edit Profile
                   </Link>
                   <Modal
-                    size="mini"
+                    size='mini'
                     trigger={
                       <Icon
                         className={style['settings-icon']}
-                        size="large"
-                        name="setting"
+                        size='large'
+                        name='setting'
                       />
                     }
                   >
@@ -97,14 +97,14 @@ class ProfileHeader extends Component {
                         action={() =>
                           history.push('/accounts/edit/change-password')
                         }
-                        label="Change Password"
+                        label='Change Password'
                       />
                       <ModalButton
                         action={() => history.push('/notifications')}
-                        label="Notifications"
+                        label='Notifications'
                       />
-                      <ModalButton action={logout} label="Logout" />
-                      <ModalButton action={this.onCloseModal} label="Cancel" />
+                      <ModalButton action={logout} label='Logout' />
+                      <ModalButton action={this.onCloseModal} label='Cancel' />
                     </Modal.Actions>
                   </Modal>
                 </Fragment>
@@ -132,7 +132,7 @@ class ProfileHeader extends Component {
                       className={`${button} ${isFollowing &&
                         style['button--is-following']}`}
                     >
-                      <Icon name="caret down" />
+                      <Icon name='caret down' />
                     </Button>
                   </Grid.Column>
                 </Fragment>

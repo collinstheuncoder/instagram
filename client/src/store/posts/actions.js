@@ -1,5 +1,8 @@
-import axios from 'axios';
 import * as actionTypes from './constants';
+
+import authRequest from '../../auth-req';
+
+const request = authRequest();
 
 // Add new post
 export const uploadPost = (post, userId, handle, history) => async dispatch => {
@@ -8,10 +11,10 @@ export const uploadPost = (post, userId, handle, history) => async dispatch => {
   });
 
   try {
-    const response = await axios.post(`/posts/upload`, {
+    const response = await request.post(`/posts/upload`, {
       post,
       userId,
-    }); 
+    });
 
     dispatch({
       type: actionTypes.ADD_POST_SUCCESS,
@@ -32,7 +35,7 @@ export const fetchPosts = () => async dispatch => {
   });
 
   try {
-    const response = await axios.get(`/posts`);
+    const response = await request.get(`/posts`);
 
     dispatch({
       type: actionTypes.FETCH_POSTS_SUCCESS,
@@ -50,9 +53,7 @@ export const fetchPost = (handle, postId) => async dispatch => {
   });
 
   try {
-    const response = await axios.get(
-      `/posts/${handle}/${postId}`
-    );
+    const response = await request.get(`/posts/${handle}/${postId}`);
 
     dispatch({
       type: actionTypes.FETCH_POST_SUCCESS,
@@ -72,11 +73,11 @@ export const likePost = (userId, postId) => async dispatch => {
   });
 
   try {
-    const response = await axios.patch(
-      `/posts/${postId}/update`,
-      { action, userId }
-    );
-    console.log(response);
+    const response = await request.patch(`/posts/${postId}/update`, {
+      action,
+      userId,
+    });
+
     dispatch({
       type: actionTypes.LIKE_POST_SUCCESS,
       payload: response.data,
@@ -95,10 +96,10 @@ export const bookmarkPost = (userId, postId) => async dispatch => {
   });
 
   try {
-    const response = await axios.patch(
-      `/posts/${postId}/update`,
-      { action, userId }
-    );
+    const response = await request.patch(`/posts/${postId}/update`, {
+      action,
+      userId,
+    });
 
     dispatch({
       type: actionTypes.BOOKMARK_POST_SUCCESS,
@@ -118,10 +119,11 @@ export const commentOnPost = (userId, postId, comment) => async dispatch => {
   });
 
   try {
-    const response = await axios.patch(
-      `/posts/${postId}/update`,
-      { action, userId, comment }
-    );
+    const response = await request.patch(`/posts/${postId}/update`, {
+      action,
+      userId,
+      comment,
+    });
 
     dispatch({
       type: actionTypes.COMMENT_ON_POST_SUCCESS,
@@ -142,10 +144,9 @@ export const deleteComment = (handle, postId) => async dispatch => {
   });
 
   try {
-    const response = await axios.patch(
-      `/posts/${handle}/${postId}`,
-      { action }
-    );
+    const response = await request.patch(`/posts/${handle}/${postId}`, {
+      action,
+    });
 
     dispatch({
       type: actionTypes.DELETE_COMMENT_SUCCESS,
@@ -163,9 +164,7 @@ export const removePost = (userId, postId) => async dispatch => {
   });
 
   try {
-    await axios.delete(
-      `/posts/${userId}/${postId}/remove`
-    );
+    await request.delete(`/posts/${userId}/${postId}/remove`);
     dispatch({ type: actionTypes.REMOVE_POST_SUCCESS });
   } catch (error) {
     dispatch({ type: actionTypes.REMOVE_POST_FAILURE, payload: error });

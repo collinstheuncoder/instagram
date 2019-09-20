@@ -16,7 +16,7 @@ function PostsTabs({ currentUser }) {
           exact
           to={`/${currentUser.username}`}
         >
-          <Icon className={icon} name="grid layout" size="small" /> Posts
+          <Icon className={icon} name='grid layout' size='small' /> Posts
         </NavLink>
         <NavLink
           style={{ margin: '0 0 0 2rem' }}
@@ -24,7 +24,7 @@ function PostsTabs({ currentUser }) {
           activeStyle={{ borderTop: '2px solid #333333' }}
           to={`/${currentUser.username}/saved`}
         >
-          <Icon className={icon} name="bookmark outline" size="small" /> Saved
+          <Icon className={icon} name='bookmark outline' size='small' /> Saved
         </NavLink>
       </Grid.Column>
     </Grid.Row>

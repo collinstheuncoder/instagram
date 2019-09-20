@@ -13,7 +13,7 @@ function PostDescription({
   bookmarkPost,
 }) {
   const { desc, bookmark, likes } = style;
-  
+
   return (
     <Fragment>
       <div className={desc}>
@@ -25,7 +25,7 @@ function PostDescription({
         />
         <Icon
           className={`${style['main-icon']} ${style['comment-icon']}`}
-          name="comment outline"
+          name='comment outline'
           onClick={showCommentSection}
         />
         <Icon

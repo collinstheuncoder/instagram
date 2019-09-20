@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Button, Form, Segment } from 'semantic-ui-react';
 
 const styles = {
-	segment: {
+  segment: {
     border: 'none',
     boxShadow: 'none',
   },
@@ -29,13 +29,9 @@ class LoginForm extends Component {
     e.preventDefault();
     const { username, password } = this.state;
     const { loginUser, history } = this.props;
-    
+
     if (username && password) {
-      loginUser(
-        username.trim(),
-        password.trim(),
-        history
-      );
+      loginUser(username.trim(), password.trim(), history);
       this.setState({
         username: '',
         password: '',
@@ -49,7 +45,7 @@ class LoginForm extends Component {
   };
 
   render() {
-  	const { username, password } = this.state;
+    const { username, password } = this.state;
     const { isLoading, error } = this.props;
 
     return (
@@ -57,22 +53,22 @@ class LoginForm extends Component {
         <Form onSubmit={this.onSubmitForm}>
           <Form.Field>
             <input
-              name="username"
+              name='username'
               value={username}
-              placeholder="Username or email"
+              placeholder='Username or email'
               onChange={this.onChange}
             />
           </Form.Field>
           <Form.Field>
             <input
-              type="password"
-              name="password"
+              type='password'
+              name='password'
               value={password}
-              placeholder="Password"
+              placeholder='Password'
               onChange={this.onChange}
             />
           </Form.Field>
-          <Button type="submit" primary fluid loading={isLoading}>
+          <Button type='submit' primary fluid loading={isLoading}>
             Log in
           </Button>
         </Form>

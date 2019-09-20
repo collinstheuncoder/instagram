@@ -16,14 +16,14 @@ function users(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         isLoading: false,
-        usersList: [ ...state.usersList, ...payload ],
-        error: null
+        usersList: [...state.usersList, ...payload],
+        error: null,
       };
     case actionTypes.FETCH_ALL_USERS_FAILURE:
-      return { 
-        ...state, 
-        isLoading: false,  
-        error: payload 
+      return {
+        ...state,
+        isLoading: false,
+        error: payload,
       };
     case actionTypes.FETCH_CURRENT_USER_REQUEST:
       return { ...state, isLoading: true };
@@ -32,7 +32,7 @@ function users(state = INITIAL_STATE, { type, payload }) {
         ...state,
         isLoading: false,
         currentUser: { ...state.currentUser, ...payload },
-        error: null
+        error: null,
       };
     case actionTypes.FETCH_USER_BY_HANDLE_REQUEST:
       return { ...state, isLoading: true };
@@ -41,13 +41,13 @@ function users(state = INITIAL_STATE, { type, payload }) {
         ...state,
         isLoading: false,
         profile: { ...state.profile, ...payload },
-        error: null
+        error: null,
       };
     case actionTypes.FETCH_USER_BY_HANDLE_FAILURE:
-      return { 
-      	...state, 
-      	isLoading: false, 
-      	error: payload 
+      return {
+        ...state,
+        isLoading: false,
+        error: payload,
       };
     case actionTypes.FOLLOW_USER_REQUEST:
       return { ...state, isLoading: true };
@@ -58,10 +58,10 @@ function users(state = INITIAL_STATE, { type, payload }) {
         user: { ...state.user, ...payload },
       };
     case actionTypes.FOLLOW_USER_FAILURE:
-      return { 
-      	...state, 
-      	isLoading: false, 
-      	error: payload 
+      return {
+        ...state,
+        isLoading: false,
+        error: payload,
       };
     default:
       return state;

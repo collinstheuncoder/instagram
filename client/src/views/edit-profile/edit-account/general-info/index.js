@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { func, shape, string } from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { Button, Form, Icon, Image, Modal, Select } from 'semantic-ui-react';
+import {
+  Button,
+  Divider,
+  Form,
+  Icon,
+  Image,
+  Modal,
+  Select,
+} from 'semantic-ui-react';
 
 import FormField from '../../../../components/edit-profile/form-field';
 
@@ -16,6 +24,8 @@ const selectOptions = [
 
 class GeneralInfo extends Component {
   state = {
+    profileImg: '',
+    previewUrl: '',
     imgUrl: this.props.currentUser.imgUrl || '',
     fullname: this.props.currentUser.fullname || '',
     username: this.props.currentUser.username || '',
@@ -30,6 +40,20 @@ class GeneralInfo extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
+
+  onFileChange = e => {
+    const reader = new FileReader();
+    const selectedFile = e.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        profileImg: selectedFile,
+        previewUrl: reader.result,
+      });
+    };
+
+    reader.readAsDataURL(selectedFile);
+  };
 
   onSelect = (e, { value, gender }) => {
     this.setState({
@@ -84,6 +108,7 @@ class GeneralInfo extends Component {
 
   render() {
     const {
+      previewUrl,
       imgUrl,
       fullname,
       username,
@@ -114,17 +139,32 @@ class GeneralInfo extends Component {
               trigger={
                 <p className={style['change-photo']}>Change Profile Photo</p>
               }
-              size="tiny"
+              size='tiny'
             >
-              <Modal.Header>Enter new photo URL</Modal.Header>
+              <Modal.Header>New Profile Photo</Modal.Header>
               <Modal.Content>
                 <Form>
                   <Form.Field className={field}>
                     <input
+                      style={{ flexBasis: '100%', display: 'none' }}
+                      id='profileImg'
+                      className={input}
+                      type='file'
+                      name='profileImg'
+                      onChange={this.onFileChange}
+                    />
+                    <label htmlFor='profileImg' className={style.upload}>
+                      <Icon name='upload' size='large' />
+                    </label>
+                  </Form.Field>
+                  {previewUrl && <img src={previewUrl} alt={username} />}
+                  <Divider horizontal>Or from URL</Divider>
+                  <Form.Field className={field}>
+                    <input
                       style={{ flexBasis: '100%' }}
                       className={input}
-                      type="text"
-                      name="imgUrl"
+                      type='text'
+                      name='imgUrl'
                       value={imgUrl}
                       onChange={this.onChange}
                     />
@@ -134,15 +174,15 @@ class GeneralInfo extends Component {
             </Modal>
           </div>
         </Form.Field>
-        <FormField name="fullname" value={fullname} onChange={this.onChange} />
+        <FormField name='fullname' value={fullname} onChange={this.onChange} />
         <FormField
-          name="username"
+          name='username'
           value={username}
           disabled={true}
           onChange={this.onChange}
         />
-        <FormField name="website" value={website} onChange={this.onChange} />
-        <FormField name="bio" value={bio} onChange={this.onChange} />
+        <FormField name='website' value={website} onChange={this.onChange} />
+        <FormField name='bio' value={bio} onChange={this.onChange} />
         <Form.Field className={field}>
           <div className={label} />
           <p style={{ color: '#cdcdcd', fontWeight: 600 }} className={input}>
@@ -150,8 +190,8 @@ class GeneralInfo extends Component {
           </p>
         </Form.Field>
         <FormField
-          type="email"
-          name="email"
+          type='email'
+          name='email'
           value={email}
           onChange={this.onChange}
         />
@@ -159,7 +199,7 @@ class GeneralInfo extends Component {
           <label className={label}>Gender</label>
           <Select
             className={input}
-            placeholder="Select Gender"
+            placeholder='Select Gender'
             options={selectOptions}
             value={gender}
             onChange={this.onSelect}
@@ -178,7 +218,7 @@ class GeneralInfo extends Component {
             <Button primary>Update</Button>
             <Modal
               className={modal}
-              size="mini"
+              size='mini'
               trigger={
                 <Button negative onClick={this.onOpenModal}>
                   Delete Account
@@ -195,10 +235,10 @@ class GeneralInfo extends Component {
               </Modal.Content>
               <Modal.Actions className={style['modal-actions']}>
                 <Button basic icon negative onClick={this.onCloseModal}>
-                  <Icon name="close" /> No
+                  <Icon name='close' /> No
                 </Button>
                 <Button basic icon positive onClick={this.onDeleteAccount}>
-                  <Icon name="check" /> Yes
+                  <Icon name='check' /> Yes
                 </Button>
               </Modal.Actions>
             </Modal>

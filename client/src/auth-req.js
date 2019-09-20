@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function clientReq() {
+function authReqest() {
   const token = localStorage.getItem('ig-token');
   
   const defaultOptions = {
@@ -18,4 +18,4 @@ function clientReq() {
   };
 };
 
-export default clientReq;
+export default authReqest;

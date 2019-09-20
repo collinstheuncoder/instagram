@@ -7,10 +7,10 @@ import style from './index.module.scss';
 
 function Suggestions({ suggestedUsers }) {
   const { avatar, card, column, handle, row } = style;
-  
+
   return (
     <Grid.Row className={row}>
-      <Header size="tiny">Suggestions</Header>
+      <Header size='tiny'>Suggestions</Header>
       <div className={style['users-list']}>
         {suggestedUsers.map(user => (
           <Grid.Column className={column} key={user._id}>
@@ -18,12 +18,12 @@ function Suggestions({ suggestedUsers }) {
               <div style={{ display: 'flex', padding: '1rem' }}>
                 <Image
                   className={avatar}
-                  floated="left"
-                  size="mini"
+                  floated='left'
+                  size='mini'
                   src={`/images/profile/${user.imgUrl}`}
                   alt={user.fullname}
                 />
-                <Icon name="close" size="large" />
+                <Icon name='close' size='large' />
               </div>
               <Card.Content>
                 <p className={handle}>
@@ -38,7 +38,7 @@ function Suggestions({ suggestedUsers }) {
                 >
                   {user.fullname}
                 </p>
-                <Button style={{ width: '100%' }} content="Follow" primary />
+                <Button style={{ width: '100%' }} content='Follow' primary />
               </Card.Content>
             </Card>
           </Grid.Column>

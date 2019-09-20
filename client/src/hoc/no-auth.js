@@ -6,7 +6,7 @@ export default function noAuthRequired(WrappedComponent) {
   class Authentication extends Component {
     render() {
       if (this.props.isLoggedIn) {
-        return <Redirect to="/home" />;
+        return <Redirect to='/home' />;
       }
 
       return <WrappedComponent {...this.props} />;

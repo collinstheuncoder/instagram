@@ -6,7 +6,7 @@ export default function requireAuth(WrappedComponent) {
   class Authentication extends Component {
     render() {
       if (!this.props.isLoggedIn) {
-        return <Redirect to="/accounts/login" />;
+        return <Redirect to='/accounts/login' />;
       }
 
       return <WrappedComponent {...this.props} />;

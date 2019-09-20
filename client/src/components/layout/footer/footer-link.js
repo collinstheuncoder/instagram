@@ -5,11 +5,11 @@ import { Grid, Icon } from 'semantic-ui-react';
 
 import { column, link, icon } from './index.module.scss';
 
-function FooterLink({ footerLink }) {  
+function FooterLink({ footerLink }) {
   return (
     <Grid.Column className={column}>
       <Link to={footerLink.path} className={link}>
-        <Icon name={footerLink.icon} size="large" className={icon} />
+        <Icon name={footerLink.icon} size='large' className={icon} />
       </Link>
     </Grid.Column>
   );

@@ -17,12 +17,12 @@ function InstaHeader({ isLoggedIn, currentUser }) {
       <Grid columns={3} className={grid}>
         <Grid.Row className={row}>
           <Grid.Column className={column}>
-            <Link to="/" className={logo}>
-              <Icon name="instagram" size="large" className={icon} />
+            <Link to='/' className={logo}>
+              <Icon name='instagram' size='large' className={icon} />
               <div className={divider} />
               <Image
-                src="https://imgur.com/3aCDD3O.jpg"
-                size="small"
+                src='https://imgur.com/3aCDD3O.jpg'
+                size='small'
                 centered
                 className={image}
               />
@@ -35,17 +35,17 @@ function InstaHeader({ isLoggedIn, currentUser }) {
             {isLoggedIn ? (
               <nav>
                 <Modal
-                  size="tiny"
+                  size='tiny'
                   trigger={
                     <Image
-                      style={{ 
+                      style={{
                         marginRight: '1.75rem',
                         width: '1.65rem',
                         display: 'inline',
-                        cursor: 'pointer', 
+                        cursor: 'pointer',
                       }}
-                      src="/images/add.png"
-                      size="small"
+                      src='/images/add.png'
+                      size='small'
                     />
                   }
                 >
@@ -60,24 +60,24 @@ function InstaHeader({ isLoggedIn, currentUser }) {
                 >
                   <Icon
                     style={{ marginRight: '1.75rem' }}
-                    name="heart outline"
-                    size="large"
+                    name='heart outline'
+                    size='large'
                   />
                 </Link>
                 <Link
                   to={`/${currentUser.username}`}
                   style={{ color: 'inherit' }}
                 >
-                  <Icon name="user outline" size="large" />
+                  <Icon name='user outline' size='large' />
                 </Link>
               </nav>
             ) : (
               <nav>
-                <NavLink to="/accounts/login" className={link}>
+                <NavLink to='/accounts/login' className={link}>
                   Log in
                 </NavLink>
                 <span className={style['link-separator']} />
-                <NavLink to="/accounts/signup">Sign up</NavLink>
+                <NavLink to='/accounts/signup'>Sign up</NavLink>
               </nav>
             )}
           </Grid.Column>

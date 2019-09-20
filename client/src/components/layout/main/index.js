@@ -17,18 +17,18 @@ import noAuthRequired from '../../../hoc/no-auth';
 
 import { main } from './index.module.scss';
 
-function InstaMain() { 
+function InstaMain() {
   return (
     <main className={main}>
       <Switch>
-        <Route exact path="/" component={noAuthRequired(LandingPage)} />
-        <Route exact path="/home" component={requireAuth(HomePage)} />
-        <Route exact path="/new" component={requireAuth(NewPostDetailPage)} />
-        <Route path="/accounts/signup" component={noAuthRequired(SignupPage)} />
-        <Route path="/accounts/login" component={noAuthRequired(LoginPage)} />
-        <Route exact path="/:handle" component={ProfilePage} />
-        <Route path="/:handle/edit" component={requireAuth(EditProfilePage)} />
-        <Route path="/:handle/p/:postId" component={PostDetailPage} />
+        <Route exact path='/' component={noAuthRequired(LandingPage)} />
+        <Route exact path='/home' component={requireAuth(HomePage)} />
+        <Route exact path='/new' component={requireAuth(NewPostDetailPage)} />
+        <Route path='/accounts/signup' component={noAuthRequired(SignupPage)} />
+        <Route path='/accounts/login' component={noAuthRequired(LoginPage)} />
+        <Route exact path='/:handle' component={ProfilePage} />
+        <Route path='/:handle/edit' component={requireAuth(EditProfilePage)} />
+        <Route path='/:handle/p/:postId' component={PostDetailPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </main>

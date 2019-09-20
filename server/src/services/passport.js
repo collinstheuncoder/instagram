@@ -6,12 +6,12 @@ import config from '../config';
 
 import { User } from '../models';
 
-const { jwt_encryption } = config;
+const { jwtEncryption } = config;
 
 // JWT Setup Options
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
-  secretOrKey: jwt_encryption,
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken('authorization'),
+  secretOrKey: jwtEncryption,
 };
 
 // JWT Strategy Creation

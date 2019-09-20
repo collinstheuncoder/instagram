@@ -5,13 +5,13 @@ import config from '../config';
 
 import { User } from '../models';
 
-const { facebook_id, facebook_secret, port } = config;
+const { facebookId, facebookSecret, port } = config;
 
 passport.use(
   new FacebookStrategy(
     {
-      clientID: facebook_id,
-      clientSecret: facebook_secret,
+      clientID: facebookId,
+      clientSecret: facebookSecret,
       callbackURL: `https://localhost:${port}/auth/facebook/callback`,
     },
     async (accessToken, refreshToken, profile, done) => {

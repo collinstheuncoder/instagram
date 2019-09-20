@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
-// Post comments schema 
+// Post comments schema
 const CommentSchema = new Schema({
   body: { type: String },
   addedBy: { type: Schema.Types.ObjectId, ref: 'User' },

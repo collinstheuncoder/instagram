@@ -1,11 +1,46 @@
 import jwt from 'jsonwebtoken';
+import multer from 'multer';
 
 import User from '../models/user';
 import config from '../config';
 
-const { jwt_encryption, jwt_expiration } = config;
+const { jwtEncryption } = config;
+
+// const uploadDir =
+//   process.env.NODE_ENV === 'development'
+//     ? '/server/src/public/uploads'
+//     : '/server/build/public/uploads';
+const uploadDir = '/server/src/public/uploads';
+
+// Profile Pic Storage Options
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, uploadDir);
+  },
+  filename(req, file, cb) {
+    cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
+  },
+});
+
+// Check for valid image file
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+export const upload = multer({
+  storage,
+  fileFilter,
+  limits: {
+    fileSize: 1024 * 1024 * 5,
+  },
+});
 
 export default {
+  // eslint-disable-next-line
   getAllUsers: async (req, res, next) => {
     try {
       const users = await User.find({}, { password: 0 }).populate(
@@ -18,8 +53,8 @@ export default {
     }
   },
 
-  getCurrentUser: async (req, res, next) => {
-    let token = req.headers['x-access-token'] || req.headers['authorization'];
+  getCurrentUser: async (req, res) => {
+    let token = req.headers['x-access-token'] || req.headers.authorization;
 
     try {
       // Check for auth scheme and slice it from string
@@ -27,7 +62,7 @@ export default {
         token = token.slice(7, token.length).trimLeft();
       }
 
-      const { sub } = jwt.decode(token, jwt_encryption);
+      const { sub } = jwt.decode(token, jwtEncryption);
 
       const user = await User.findById(sub, { password: 0 }).populate([
         'uploadedPosts',
@@ -42,7 +77,7 @@ export default {
     }
   },
 
-  getUserByHandle: async (req, res, next) => {
+  getUserByHandle: async (req, res) => {
     const { handle } = req.params;
 
     if (!handle) {
@@ -70,7 +105,7 @@ export default {
     if (!userId) {
       return res
         .status(401)
-        .json({ message: `You must be logged in to follow users` });
+        .json({ message: 'You must be logged in to follow users' });
     }
 
     try {
@@ -80,9 +115,11 @@ export default {
       // ID of user to follow/unfollow
       const userToFollowId = user._id;
 
-      // Check if current user is already following 
+      // Check if current user is already following
       // found user (corresponding to handle)
-      const isFollowing = user.followers.some(user => user.equals(userId));
+      const isFollowing = user.followers.some(foundUser =>
+        foundUser.equals(userId)
+      );
 
       const response = {};
 
@@ -117,9 +154,19 @@ export default {
     }
   },
 
+  // eslint-disable-next-line
   updateUserInfo: async (req, res, next) => {
-    const { updateInfo } = req.body;
+    const { filename } = req.file;
     const { handle } = req.params;
+    let { updateInfo } = req.body;
+    let imgUrl;
+
+    if (filename) {
+      const url = `${req.protocol}://${req.get('host')}`;
+      imgUrl = `${url}${uploadDir}/${filename}`;
+
+      updateInfo = { ...updateInfo, imgUrl };
+    }
 
     try {
       const updatedUser = await User.findOneAndUpdate(
@@ -134,12 +181,13 @@ export default {
     }
   },
 
+  // eslint-disable-next-line
   deleteAccount: async (req, res, next) => {
     const { handle } = req.params;
-    
+
     try {
       // Check if current user corresponds to user to be deleted
-      const response = await User.findOneAndRemove({ username: handle });
+      await User.findOneAndRemove({ username: handle });
 
       return res.status(200).json({ success: true });
     } catch (error) {

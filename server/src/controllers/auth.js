@@ -1,37 +1,24 @@
+/* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
-import multer from 'multer';
 
 import { User } from '../models';
 import config from '../config';
 
-const { jwt_encryption, jwt_expiration } = config;
+const { jwtEncryption, jwtExpiration } = config;
 
-// Profile Pic Storage Options
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, './profileImages/');
-  },
-  filename(req, file, cb) {
-    cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
-  },
-});
-
-// Check for valid image file
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
-
-export const uploadImg = multer({
-  storage,
-  fileFilter,
-  limits: {
-    fileSize: 1024 * 1024 * 5,
-  },
-});
+// Generate auth token
+function authToken(user) {
+  return jwt.sign(
+    {
+      sub: user._id,
+      iat: new Date().getTime(),
+    },
+    jwtEncryption,
+    {
+      expiresIn: jwtExpiration,
+    }
+  );
+}
 
 export default {
   signup: async (req, res, next) => {
@@ -55,7 +42,7 @@ export default {
       // Assign token to succesfully registered user
       const token = authToken(newUser);
 
-      return res.status(200).send({ token });
+      return res.status(200).send({ token, user: newUser });
     } catch (error) {
       next(error);
     }
@@ -63,28 +50,14 @@ export default {
 
   login: async (req, res, next) => {
     try {
-      const user = req.user;
+      const { user } = req;
 
       // Assign token to succesfully logged in user
       const token = authToken(user);
 
-      return res.status(200).json({ token });
+      return res.status(200).json({ token, user });
     } catch (error) {
       next(error);
     }
   },
 };
-
-// Generate auth token
-function authToken(user) {
-  return jwt.sign(
-    {
-      sub: user._id,
-      iat: new Date().getTime(),
-    },
-    jwt_encryption,
-    {
-      expiresIn: jwt_expiration,
-    }
-  );
-}

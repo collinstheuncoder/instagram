@@ -1,22 +1,20 @@
 import mongoose from 'mongoose';
 
-import config from '../config';
+// import config from '../config';
 
-const { db_username, db_password, db_host, db_port, db_name } = config;
+// const { dbUsername, dbPassword, dbHost, dbPort, dbName } = config;
 
-const db_url = `mongodb://${db_username}:${db_password}@${db_host}.mlab.com:${db_port}/${db_name}`;
+// const dbUri = `mongodb://${dbUsername}:${dbPassword}@${dbHost}.mlab.com:${dbPort}/${dbName}`;
 
-//const db_url = 'mongodb+srv://collinstheuncoder:afterMATH@1988@instagram-iwn7m.mongodb.net/test?retryWrites=true'
+const dbUri =
+  'mongodb+srv://collinstheuncoder:afterMATH@1988@instagram-iwn7m.mongodb.net/test?retryWrites=true';
 
 // DB Config
 mongoose.Promise = global.Promise;
 mongoose
-  .connect(
-    db_url,
-    {
-      useNewUrlParser: true,
-    }
-  )
+  .connect(dbUri, {
+    useNewUrlParser: true,
+  })
   .then(() => console.log('Successful DB connection'))
   .catch(error => console.log(`Connection error: ${error}`));
 mongoose.set('useFindAndModify', false);

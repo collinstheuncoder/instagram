@@ -1,14 +1,15 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import passport from 'passport';
 import morgan from 'morgan';
 import path from 'path';
 
-import { routes } from './routes';
+import routes from './routes';
 
-// DB Config 
+// DB Config
 import './db';
- 
+
 const app = express();
 
 // Middlewares
@@ -16,6 +17,7 @@ app.use(express.static(path.join(__dirname, '../../client/build')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(passport.initialize());
 app.use(morgan('dev'));
 app.use(cors());
 

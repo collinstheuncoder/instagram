@@ -2,7 +2,6 @@ import express from 'express';
 import passport from 'passport';
 
 import { authController } from '../controllers';
-import { uploadImg } from '../controllers/auth';
 
 import '../services/passport';
 
@@ -12,7 +11,7 @@ const authRouter = express.Router();
 
 const handleLogin = passport.authenticate('local', { session: false });
 
-authRouter.route('/signup').post(uploadImg.single('profileImg'), authController.signup);
+authRouter.route('/signup').post(authController.signup);
 authRouter.route('/login').post(handleLogin, authController.login);
 authRouter.get('/facebook', passportFacebook.authenticate('facebook'));
 authRouter.get(

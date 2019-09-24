@@ -1,6 +1,11 @@
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({
+  path:
+    process.env.NODE_ENV === 'development'
+      ? `${__dirname}/../../../.env.development`
+      : `${__dirname}/../../../.env.production`,
+});
 
 // To be accessible across app
 const config = {};

@@ -14,7 +14,7 @@
     "prebuild": "rm -rf server/dist",
     "build-babel": "babel -d ./server/dist ./server/src -s",
     "build": "yarn build-babel",
-    "start": "node server/build/server.js",
+    "start": "node server/dist/server.js",
     "lint": "eslint server/src",
     "test": "",
     "heroku-postbuild": "YARN_PRODUCTION=false yarn build && cd client && yarn && yarn build"

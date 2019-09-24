@@ -1,10 +1,11 @@
 import dotenv from 'dotenv';
 
+const path = `${__dirname}/../../../.env.${
+  process.env.NODE_ENV.trim() === 'development' ? 'development' : 'production'
+}`;
+
 dotenv.config({
-  path:
-    process.env.NODE_ENV === 'development'
-      ? `${__dirname}/../../../.env.development`
-      : `${__dirname}/../../../.env.production`,
+  path,
 });
 
 // To be accessible across app
